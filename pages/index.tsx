@@ -7,6 +7,7 @@ import {User} from '../utils/types'
 export default function Home(props: { user: User }) {
 
   const {user,setUserState,setIsLoading,loading} = useContext(UserContext)
+
   useEffect(() => {
     setUserState(props.user)
     setIsLoading(false)
@@ -25,10 +26,6 @@ export default function Home(props: { user: User }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      <h1>HOLA</h1>
-      <h2>{user?.points}</h2>
-      
     </>
   )
 }
@@ -51,7 +48,7 @@ export async function getStaticProps(){
     props: {                      
       user: {
         ...res
-      }
+      },
     },            
   }; 
 }

@@ -1,8 +1,8 @@
 export interface User {
-  id: string;
-  name: string;
-  points: number;
-  redeemHistory: [];
+  id?: string;
+  name?: string;
+  points?: number;
+  redeemHistory?: [];
 }
 
 export interface Product {
