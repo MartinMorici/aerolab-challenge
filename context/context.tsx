@@ -21,9 +21,11 @@ const UserProvider = ({ children }: Props) => {
   const setUserState = (user: User) => {
     setUser(user);
   };
+
   const setIsLoading = (loading: boolean) => {
     setLoading(loading);
   };
+
 
   return <UserContext.Provider value={{ user, setUserState, loading, setIsLoading }}>{children}</UserContext.Provider>;
 };

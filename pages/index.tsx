@@ -31,13 +31,12 @@ export default function Home(props: { user: User }) {
 }
 
 export async function getStaticProps(){
-  const apitoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZmNTlkMDM3ODAxMTAwMjExZmU1YjUiLCJpYXQiOjE2Nzc2NzkwNTd9.4IBCyrvzZh9fQpuQdGMZXrYNDmcWbCc_HeO5JslDrZw'
 
   const data = await fetch('https://coding-challenge-api.aerolab.co/user/me',{
     headers:{
       'Content-Type' : 'application/json',
       'Accept': 'application/json',
-      'Authorization': `Bearer ${apitoken}`
+      'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
     }
   })
 
