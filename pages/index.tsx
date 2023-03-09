@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '@/context/context'
 import {User} from '../utils/types'
+import Products from '@/components/products/Products'
 
 export default function Home(props: { user: User }) {
 
@@ -26,6 +27,8 @@ export default function Home(props: { user: User }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Products/>
+
     </>
   )
 }

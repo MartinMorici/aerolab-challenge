@@ -1,10 +1,10 @@
 import { UserContext } from '@/context/context';
 import Image from 'next/image';
 import React, { useContext, useState } from 'react';
-import Logo from '../assets/aerolab-logo.svg';
-import Coin from '../assets/icons/coin.svg';
-import Banner from '../assets/header-x1.png';
-import AddPoints from './AddPoints';
+import Logo from '../../assets/aerolab-logo.svg';
+import Coin from '../../assets/icons/coin.svg';
+import Banner from '../../assets/header-x1.png';
+import AddPoints from './AddPoints'
 
 const Header = () => {
   const { user, setUserState, setShowAddCoins, showCoins } = useContext(UserContext);

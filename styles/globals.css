@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.filter-active {
+  @apply text-white bg-[#0ad4fa];
+}

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Coin from '../assets/icons/coin.svg';
+import Coin from '../../assets/icons/coin.svg';
 import React, { useContext, useState } from 'react';
 import { postCoins } from '@/pages/api/points';
 import { UserContext } from '@/context/context';

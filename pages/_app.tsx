@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import UserProvider from '../context/context';
-import Header from '@/components/Header';
+import Header from '@/components/header/Header';
 import { Source_Sans_Pro } from 'next/font/google';
 
 const source = Source_Sans_Pro({
