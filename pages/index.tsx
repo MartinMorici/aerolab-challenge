@@ -2,15 +2,24 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '@/context/context'
-import {User} from '../utils/types'
+import {User, Product} from '../utils/types'
+
 import Products from '@/components/products/Products'
 
-export default function Home(props: { user: User }) {
+interface AppProps{
+  user:User,
+  products: Product[]
+}
 
-  const {user,setUserState,setIsLoading,loading} = useContext(UserContext)
+export default function Home(props: AppProps) {
 
+  const {user,setUserState,setIsLoading,loading, setTotalProducts, products} = useContext(UserContext)
+  console.log(products);
+  
   useEffect(() => {
+    setIsLoading(true);
     setUserState(props.user)
+    setTotalProducts(props.products)
     setIsLoading(false)
     
   }, [])
@@ -27,7 +36,7 @@ export default function Home(props: { user: User }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Products/>
+      <Products products={products}/>
 
     </>
   )
@@ -35,7 +44,16 @@ export default function Home(props: { user: User }) {
 
 export async function getStaticProps(){
 
-  const data = await fetch('https://coding-challenge-api.aerolab.co/user/me',{
+  const user = await fetch('https://coding-challenge-api.aerolab.co/user/me',{
+    headers:{
+      'Content-Type' : 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    }
+  })
+  const resUser = await user.json()
+
+  const products = await fetch('https://coding-challenge-api.aerolab.co/products',{
     headers:{
       'Content-Type' : 'application/json',
       'Accept': 'application/json',
@@ -43,14 +61,19 @@ export async function getStaticProps(){
     }
   })
 
-  const res = await data.json()
+  const resProducts = await products.json()
+
+  
 
 
   return {
     props: {                      
       user: {
-        ...res
+        ...resUser
       },
+      products: [
+        ...resProducts
+      ]
     },            
   }; 
 }
