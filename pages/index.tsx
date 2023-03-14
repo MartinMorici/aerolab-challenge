@@ -14,14 +14,13 @@ interface AppProps{
 export default function Home(props: AppProps) {
 
   const {user,setUserState,setIsLoading,loading, setTotalProducts, products} = useContext(UserContext)
-  console.log(products);
-  
+
+
   useEffect(() => {
     setIsLoading(true);
     setUserState(props.user)
     setTotalProducts(props.products)
     setIsLoading(false)
-    
   }, [])
 
   if (loading) {
@@ -36,7 +35,7 @@ export default function Home(props: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Products products={products}/>
+      <Products/>
 
     </>
   )
