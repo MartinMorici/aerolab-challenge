@@ -11,7 +11,7 @@ import { redeemProduct } from '../../pages/api/redeem';
 const IndividualProduct = (props: Product) => {
   const { user, setUserState } = useContext(UserContext);
   const [redeemed, setRedeemed] = useState(false)
-  const redeemProductHandler = async (id: number, cost: number) => {
+  const redeemProductHandler = async (id: string, cost: number) => {
     await redeemProduct(id);
     setUserState({ ...user, points: user?.points! - cost });
     setRedeemed(true)
