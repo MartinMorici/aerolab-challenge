@@ -25,8 +25,8 @@ export const UserContext = React.createContext({} as Context);
 const UserProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | undefined>(undefined);
   const [products,setProducts] = useState<Product[] | undefined>(undefined)
-  const [currentProducts, setCurrentProducts] = useState<Product[] | undefined>(undefined)
   const [page, setPage] = useState<number>(1)
+  const [currentProducts, setCurrentProducts] = useState<Product[] | undefined>(undefined)
   const [loading, setLoading] = useState<boolean>(true);
   const [showCoins, setShowCoins] = useState<boolean>(false)
 

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '@/context/context'
 import {User, Product} from '../utils/types'
@@ -13,19 +12,20 @@ interface AppProps{
 
 export default function Home(props: AppProps) {
 
-  const {user,setUserState,setIsLoading,loading, setTotalProducts, products} = useContext(UserContext)
+  const {user,setUserState,setIsLoading,loading, setTotalProducts, setActualProducts,page} = useContext(UserContext)
 
 
   useEffect(() => {
     setIsLoading(true);
     setUserState(props.user)
     setTotalProducts(props.products)
-    setIsLoading(false)
+    setActualProducts(props.products.slice((page - 1) * 16, page * 16))
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
   
   return (
     <>
